@@ -78,7 +78,7 @@
         <a href="https://t.me/Zalina_Avon_Registracia" class="telegram">Свяжитесь со мной в телеграмме</a>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function ()
+               document.addEventListener('DOMContentLoaded', function ()
        {
         const slider = document.getElementById('slider');
         const slides = document.querySelectorAll('.slide');
@@ -106,7 +106,7 @@
         }
         function goToSlide(slideIndex){
             currentSlide = slideIndex;
-            const translateX= -currentSlide *103;
+            const translateX= -currentSlide *100;
             slider.style.transform= `translateX(${translateX}%)`;
             const dots= document.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
@@ -136,10 +136,12 @@
 
         function handleTouchStart(event){
             touchStartX =event.touches[0].clientX;
+            event.preventDefault();
         }
         function handleTouchEnd(event){
             touchEndX =event.changedTouches[0].clientX;
             handleSwipe();
+            event.preventDefault();
         }
         function handleSwipe(){
             const swipeThreshold = 50;
@@ -156,8 +158,8 @@
             createDots();
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
-            slider.addEventListener('touchstart', handleTouchStart, {passive: true});
-            slider.addEventListener('touchend', handleTouchEnd, {passive: true});
+            slider.addEventListener('touchstart', handleTouchStart, {passive: false});
+            slider.addEventListener('touchend', handleTouchEnd, {passive: false});
             goToSlide(0);
         }
         inistSlider();
