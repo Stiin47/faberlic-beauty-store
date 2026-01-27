@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faberlic</title>
+    <link rel="stylesheet" href="sfdgdfwerfgydsvbgxjkdfskefivvsddfhgdtjsuj.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="main_menu"><a href="index.html">О компании</a></div>
+        <div class="main_menu"><a href="catalog-products-faberlic.html">Каталог</a></div>
+        <div class="main_menu"><a href="registration-in-faberlic.html">Регистрация</a></div>
+    </header>  
+    
+    <h1>Faberlic</h1>
+    
+    <div class="header-text" id="o_kompanii">
+        <div class="text">
+            <p class="o_kompanii"><b>О компании</b></p>
+            <p class="osnovtext">Крупная российская компания прямых продаж, которая производит широкий ассортимент товаров, включая уникальную запатентованную кислородную косметику, одежду, товары для дома, парфюмерию, продукты для здоровья и многое другое.</p>
+            <p class="osnovtext">Компания была основана в 1997 году под названием «Русская линия» и переименована в Faberlic в 2001 году для выхода на международные рынки. Название происходит от латинского слова "фабер" (мастер) и славянского "лик".</p>
+            <p class="osnovtext">Faberlic владеет собственным высокотехнологичным производством в Москве и швейной фабрикой (до апреля 2025 года) в Ивановской области. Продукция изготавливается по международным стандартам качества (GMP, ISO 9001).</p>
+            <p class="produk"><b>Ассортимент продукции</b></p>
+            <p class="osnovtext">Основное направление — это уникальная кислородная косметика с комплексом Aquaftem®, который доставляет кислород в глубокие слои кожи. Также представлены декоративная косметика, средства для ухода за кожей и волосами, а также парфюмерия, созданная в сотрудничестве с известными европейскими парфюмерами.</p>
+            <p class="osnovtext">Товары для дома: Включают экологически безопасную косметику для дома (средства для стирки, мытья посуды, уборки), аксессуары для уборки, посуду и текстиль.</p>
+            <p class="osnovtext">В ассортименте есть биологически активные добавки (БАДы), функциональное питание, ортопедические товары и медицинские аппараты «ДЭНАС». </p>
+        </div>
+    </div>
+     <div class="for_cotalog">
+        <h3>Пример продукции</h3>
+        <div class="slider-container">
+            <div class="slider" id="slider">
+            <div class="slide">
+                <div class="prod">
+                    <img src="./image/kosm.jpg">
+                    <div class="prod-info">
+                        <h3>1. Косметика</h3>
+                        <p>Косметика для лица, макияж и уход</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="prod">
+                    <img src="./image/hair.jpg">
+                    <div class="prod-info">
+                        <h3>2. Уход за волосами</h3>
+                        <p>Шампуни, бальзамы, маски</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="prod">
+                    <img src="./image/bad.jpg">
+                    <div class="prod-info">
+                        <h3>3. Здоровье и БАДы</h3>
+                        <p>Витамины и добавки</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                </div>
+        </div>
+            <h3>Больше продукции можете посмотреть нажав "Посмотреть каталог" ниже</h3>
+            <a href="catalog-products-faberlic.html" class="link">Посмотреть каталог</a>
+        </div>
+    <footer class="kontakti">
+        <a href="https://t.me/Zalina_Avon_Registracia" class="telegram-icon" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://t.me/Zalina_Avon_Registracia" class="telegram">Свяжитесь со мной в телеграмме</a>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function ()
+       {
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.querySelector('.dots');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentSlide =0;
+        const totalSlides = slides.length;
+
+        function createDots(){
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+
+                if(i===0){
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+        function goToSlide(slideIndex){
+            currentSlide = slideIndex;
+            const translateX= -currentSlide *103;
+            slider.style.transform= `translateX(${translateX}%)`;
+            const dots= document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                if (index===currentSlide){
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide >= totalSlides){
+                currentSlide =0;
+            }
+            goToSlide(currentSlide)
+        }
+        function prevSlide(){
+            currentSlide--;
+            if(currentSlide <0){
+                currentSlide =totalSlides -1;
+            }
+            goToSlide(currentSlide)
+        }
+        let touchStartX=0;
+        let touchEndX=0;
+
+        function handleTouchStart(event){
+            touchStartX =event.touches[0].clientX;
+        }
+        function handleTouchEnd(event){
+            touchEndX =event.changedTouches[0].clientX;
+            handleSwipe();
+        }
+        function handleSwipe(){
+            const swipeThreshold = 50;
+            const difff =touchStartX-touchEndX;
+            if(Math.abs(difff)>swipeThreshold) {
+                if (difff>0){
+                    nextSlide();
+                }else{
+                    prevSlide();
+                }
+            }
+        }
+        function inistSlider(){
+            createDots();
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            slider.addEventListener('touchstart', handleTouchStart, {passive: true});
+            slider.addEventListener('touchend', handleTouchEnd, {passive: true});
+            goToSlide(0);
+        }
+        inistSlider();
+       });
+    </script>
+</body>
+</html>
